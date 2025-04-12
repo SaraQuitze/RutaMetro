@@ -122,11 +122,10 @@ print(f"\nError Absoluto Medio del Modelo: {mae:.2f} minutos")
 # ========================
 
 def ruta_optima_predictiva(origen, destino, hora_actual=None, condiciones=None):
-    """
-    Combina el grafo de NetworkX con el modelo predictivo para:
-    1. Encontrar la ruta más corta
-    2. Predecir el tiempo de viaje considerando condiciones actuales
-    """
+    #Combina el grafo de NetworkX con el modelo predictivo para:
+    # 1. Encontrar la ruta más corta
+    # 2. Predecir el tiempo de viaje considerando condiciones actuales
+
     if hora_actual is None:
         hora_actual = datetime.now().hour
     if condiciones is None:
@@ -136,8 +135,7 @@ def ruta_optima_predictiva(origen, destino, hora_actual=None, condiciones=None):
     try:
         ruta = nx.dijkstra_path(METRO, source=origen, target=destino, weight='Distancia')
         distancia_total = nx.dijkstra_path_length(METRO, source=origen, target=destino, weight='Distancia')
-    except nx.NetworkXNoPath:
-        return {"error": "No existe ruta entre las estaciones especificadas"}
+    except nx.NetworkXNoPath: print("error: No existe ruta entre las estaciones especificadas")
     
     # Predecir tiempo para cada segmento
     tiempos_segmentos = []
