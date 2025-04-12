@@ -111,7 +111,7 @@ plt.show()
 # =====================
 
 def analizar_patrones(origen, destino, hora_actual=None):
-    """Identifica patrones de viaje para una ruta específica"""
+    #Identifica patrones de viaje para una ruta específica
     if hora_actual is None:
         hora_actual = datetime.now().hour
     
@@ -143,7 +143,7 @@ def analizar_patrones(origen, destino, hora_actual=None):
     }
 
 def generar_recomendacion(stats, hora_actual):
-    """Genera recomendaciones basadas en los patrones encontrados"""
+    #Genera recomendaciones basadas en los patrones encontrados
     hora_pico = any(7 <= hora_actual <= 9 or 17 <= hora_actual <= 19)
     
     for cluster in stats.to_dict('records'):
